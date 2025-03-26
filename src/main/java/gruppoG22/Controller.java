@@ -99,8 +99,7 @@ public class Controller implements Initializable {
     @FXML
     public void domandaPane_chiediDomanda() {
         if (riepilogo.getDomande().isEmpty()) {
-            domandaPane.setVisible(false);
-            riepilogoPane.setVisible(true);
+            schermataRiepilogo();
         }
 
         var domanda = riepilogo.getDomande().getFirst();
@@ -119,13 +118,18 @@ public class Controller implements Initializable {
         timeline.setCycleCount(3);
         timeline.play();
 
-        domandaPane_domanda.setText(domanda.toString());
+        domandaPane_domanda.setText(domanda.toString() + " ?");
         domandaPane_contatore.setText(tentativoAttuale + "/" + riepilogo.getNumeroDomande());
         tentativoAttuale++;
     }
 
     private void tentativoErrato() {
         System.out.println("Errato");
+    }
+
+    private void schermataRiepilogo() {
+        domandaPane.setVisible(false);
+        riepilogoPane.setVisible(true);
     }
 
     @Override
