@@ -106,6 +106,7 @@ public class Controller implements Initializable {
         var domanda = riepilogo.getDomande().getFirst();
         riepilogo.getDomande().removeFirst();
 
+        domandaPane_timer.setText("00:30");
         AtomicInteger tempo = new AtomicInteger(3);
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), _ -> {
             tempo.getAndDecrement();
