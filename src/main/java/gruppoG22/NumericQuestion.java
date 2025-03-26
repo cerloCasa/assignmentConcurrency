@@ -34,7 +34,7 @@ public class NumericQuestion {
     }
 
     public String toString() {
-        return num1 + operator + num2 + " =";
+        return num1 + " " + operator + " " + num2 + " =";
     }
 
     public static void main(String[] args) {

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Riepilogo {
     private final List<NumericQuestionAttempt> tentativi = new ArrayList<>();
+    private final List<NumericQuestion> domande = new ArrayList<>();
     private int numeroDomande;
 
     public void setNumeroDomande(int numeroDomande) {
@@ -13,8 +14,18 @@ public class Riepilogo {
         this.numeroDomande = numeroDomande;
     }
 
+    public List<NumericQuestion> getDomande() {
+        return domande;
+    }
+
     public int getNumeroDomande() {
         return numeroDomande;
+    }
+
+    public void generaDomanda() {
+        NumericQuestion question = new NumericQuestion();
+        question.randomInit();
+        domande.add(question);
     }
 
     public void aggiungiTentativo(NumericQuestionAttempt tentativo) {

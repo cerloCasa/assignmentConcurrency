@@ -71,7 +71,7 @@
                      <TableColumn prefWidth="280.0" text="Esito" />
                   </columns>
                </TableView>
-               <Label text="Gentile ,grazie per aver completato il quiz. Esporta il risultato su file" />
+               <Label text="Gentile , grazie per aver completato il quiz. Esporta il risultato su file" />
                <Button mnemonicParsing="false" text="Esporta" />
             </children>
          </VBox>

@@ -87,24 +87,41 @@ public class Controller implements Initializable {
     public void domandaPane_iniziaQuiz() {
         for (int i = 0; i < riepilogo.getNumeroDomande(); i++)
             domandaPane_generaDomanda();
+        domandaPane_chiediDomanda();
     }
 
     @FXML
     private void domandaPane_generaDomanda() {
-        
+        riepilogo.generaDomanda();
     }
 
     @FXML
     public void domandaPane_chiediDomanda() {
-        AtomicInteger tempo = new AtomicInteger(30);
+        if (riepilogo.getDomande().isEmpty()) {
+            domandaPane.setVisible(false);
+            riepilogoPane.setVisible(true);
+        }
+
+        var domanda = riepilogo.getDomande().getFirst();
+        riepilogo.getDomande().removeFirst();
+
+        AtomicInteger tempo = new AtomicInteger(7);
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), _ -> {
             tempo.getAndDecrement();
             domandaPane_timer.setText("00:" + String.format("%02d", tempo.get()));
+            if (tempo.get() == 0) {
+                tentativoErrato();
+                domandaPane_chiediDomanda();
+            }
         }));
-        timeline.setCycleCount(30);
+        timeline.setCycleCount(7);
         timeline.play();
 
+        domandaPane_domanda.setText(domanda.toString());
+    }
 
+    private void tentativoErrato() {
+        System.out.println("Errato");
     }
 
     @Override
