@@ -19,6 +19,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Controller implements Initializable {
     private Utente utente;
     private Riepilogo riepilogo = new Riepilogo();
+    private int tentativoAttuale = 1;
 
     @FXML
     private VBox accountingPane;
@@ -105,7 +106,7 @@ public class Controller implements Initializable {
         var domanda = riepilogo.getDomande().getFirst();
         riepilogo.getDomande().removeFirst();
 
-        AtomicInteger tempo = new AtomicInteger(7);
+        AtomicInteger tempo = new AtomicInteger(3);
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), _ -> {
             tempo.getAndDecrement();
             domandaPane_timer.setText("00:" + String.format("%02d", tempo.get()));
@@ -114,10 +115,12 @@ public class Controller implements Initializable {
                 domandaPane_chiediDomanda();
             }
         }));
-        timeline.setCycleCount(7);
+        timeline.setCycleCount(3);
         timeline.play();
 
         domandaPane_domanda.setText(domanda.toString());
+        domandaPane_contatore.setText(tentativoAttuale + "/" + riepilogo.getNumeroDomande());
+        tentativoAttuale++;
     }
 
     private void tentativoErrato() {
