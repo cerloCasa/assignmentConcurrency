@@ -1,4 +1,4 @@
-package gruppoG22;
+package myMathQuiz;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;

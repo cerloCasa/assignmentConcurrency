@@ -1,4 +1,4 @@
-module gruppoG22 {
+module myMathQuiz {
     requires javafx.controls;
     requires javafx.fxml;
 

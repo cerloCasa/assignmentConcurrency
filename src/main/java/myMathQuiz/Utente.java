@@ -1,4 +1,4 @@
-package gruppoG22;
+package myMathQuiz;
 
 public class Utente {
     private final String nome;

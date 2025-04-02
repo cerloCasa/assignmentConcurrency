@@ -1,4 +1,4 @@
-package gruppoG22;
+package myMathQuiz;
 
 public class NumericQuestionAttempt {
     private final NumericQuestion question;
